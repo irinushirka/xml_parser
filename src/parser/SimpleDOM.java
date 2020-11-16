@@ -3,13 +3,9 @@ package parser;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,7 +18,7 @@ public class SimpleDOM {
         books = new ArrayList<Book>();
     }
 
-    public void parse() throws FileNotFoundException, IOException, ParserConfigurationException, SAXException {
+    public void parse() throws IOException, ParserConfigurationException, SAXException {
         DocumentBuilderFactory dbf;
         DocumentBuilder        db;
         Document               doc;

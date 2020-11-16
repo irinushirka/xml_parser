@@ -19,17 +19,17 @@ public class SimpleSAX {
         this.tag_name = tag_name;
 
         handler = new DefaultHandler() {
-            boolean tagOn = false; // флаг начала разбора тега
+            boolean tagOn = false;
 
             @Override
-            public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-                tagOn = (qName.equalsIgnoreCase(tag_name)); // Устанавливаем флаг для тега TAG_NAME
+            public void startElement(String uri, String localName, String qName, Attributes attributes) {
+                tagOn = (qName.equalsIgnoreCase(tag_name));
                 System.out.println("<" + qName + ">");
             }
 
             @Override
             public void characters(char ch[], int start, int length) throws SAXException {
-                if (tagOn) {    // Проверка флага
+                if (tagOn) {
                     System.out.println("\tText: " + new String(ch, start, length));
                     tagOn = false;
                 }
