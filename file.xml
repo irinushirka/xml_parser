@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <books count="3">
+        <book pages="120" price="540">
+            <title>Alice in Wonderland</title>
+            <author>L. Karrol</author>
+        </book>
+        <book pages="200" price="500">
+            <title>Programming in C</title>
+            <author>D. Ritchie</author>
+        </book>
+        <book pages="400" price="800">
+            <title>Programming in Java</title>
+            <author>S. Someone</author>
+        </book>
+    </books>
+</root>
