@@ -16,17 +16,34 @@ public class Book {
         this.title = title;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    public int getPages() {
+        return pages;
     }
 
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
     public void info(){
         System.out.println("--------");
         System.out.println("Author: " + author);

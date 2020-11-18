@@ -15,10 +15,10 @@ public class SimpleDOM {
 
     SimpleDOM(String file_name){
         this.file_name = file_name;
-        books = new ArrayList<Book>();
+        books = new ArrayList<>();
     }
 
-    public void parse() throws IOException, ParserConfigurationException, SAXException {
+    public ArrayList<Book> parse() throws IOException, ParserConfigurationException, SAXException {
         DocumentBuilderFactory dbf;
         DocumentBuilder        db;
         Document               doc;
@@ -29,7 +29,6 @@ public class SimpleDOM {
         doc = db.parse(fis);
 
         doc.getDocumentElement().normalize();
-
         NodeList nodeList = doc.getElementsByTagName("book");
 
         for (int i = 0; i < nodeList.getLength(); i++) {
@@ -47,11 +46,6 @@ public class SimpleDOM {
                 books.add(b);
             }
         }
-        getParsingResults();
-    }
-    private void getParsingResults(){
-        for (Book b: books) {
-            b.info();
-        }
+        return books;
     }
 }

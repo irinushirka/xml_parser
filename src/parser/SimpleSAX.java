@@ -7,30 +7,33 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.util.ArrayList;
+
 public class SimpleSAX {
     private String  file_name;
-    private String  tag_name;
+    private String tag;
+    private ArrayList<String> results;
 
     DefaultHandler handler;
 
     public SimpleSAX(String file_name, String tag_name)
     {
         this.file_name = file_name;
-        this.tag_name = tag_name;
+        this.tag = tag_name;
+        results = new ArrayList();
 
         handler = new DefaultHandler() {
             boolean tagOn = false;
 
             @Override
             public void startElement(String uri, String localName, String qName, Attributes attributes) {
-                tagOn = (qName.equalsIgnoreCase(tag_name));
-                System.out.println("<" + qName + ">");
+                tagOn = qName.equalsIgnoreCase(tag);
             }
 
             @Override
             public void characters(char ch[], int start, int length) throws SAXException {
                 if (tagOn) {
-                    System.out.println("\tText: " + new String(ch, start, length));
+                    results.add(new String(ch, start, length));
                     tagOn = false;
                 }
             }
@@ -44,7 +47,7 @@ public class SimpleSAX {
             @Override
             public void startDocument() throws SAXException
             {
-                System.out.println("Начало разбора документа: ");
+                System.out.println("Разбираю документ...");
             }
             @Override
             public void endDocument() throws SAXException
@@ -53,7 +56,8 @@ public class SimpleSAX {
             }
         };
     }
-    public void start(){
+
+    public ArrayList<String> start() {
         try {
             SAXParserFactory factory;
             factory = SAXParserFactory.newInstance();
@@ -63,5 +67,6 @@ public class SimpleSAX {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return results;
     }
 }
